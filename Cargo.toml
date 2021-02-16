@@ -1,0 +1,11 @@
+[package]
+name = "my_lambda_func"
+version = "0.1.0"
+authors = ["Damien Pontifex <damien.pontifex@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+lambda = { git = "https://github.com/awslabs/aws-lambda-rust-runtime" }
+aws_lambda_events = "0.4"
+tokio = { version = "1", features = ["macros", "rt"] }
+serde_json = "1"
