@@ -2,6 +2,7 @@ import * as cdk from '@aws-cdk/core';
 import * as lambda from '@aws-cdk/aws-lambda';
 import * as targets from '@aws-cdk/aws-events-targets';
 import * as events from '@aws-cdk/aws-events';
+import * as logs from '@aws-cdk/aws-logs';
 import * as path from 'path';
 
 export class RustLambdaStack extends cdk.Stack {
@@ -12,6 +13,7 @@ export class RustLambdaStack extends cdk.Stack {
       runtime: lambda.Runtime.PROVIDED_AL2,
       handler: 'main',
       code: lambda.Code.fromAsset(path.join(__dirname, '../target/x86_64-unknown-linux-musl/release/my_lambda_func.zip')),
+      logRetention: logs.RetentionDays.TWO_WEEKS,
     });
 
     const rule = new events.Rule(this, 'scheduleRule', {
