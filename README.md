@@ -1,11 +1,5 @@
-```bash
-rustup target add x86_64-unknown-linux-musl
-brew install filosottile/musl-cross/musl-cross
-mkdir .cargo
-echo '[target.x86_64-unknown-linux-musl]\nlinker = "x86_64-linux-musl-gcc"' > .cargo/config
-cargo build --release --target x86_64-unknown-linux-musl && (cd target/x86_64-unknown-linux-musl/release && cp my_lambda_func bootstrap && zip my_lambda_func bootstrap && rm bootstrap)
+# AWS Lambda with Rust and Deployed with the CDK
 
-(cd infrastructure && npm ci)
-(cd infrastructure && npx cdk bootstrap)
-(cd infrastructure && npx cdk deploy)
-```
+- `make build` to build and package the rust code ready to be deployed
+- `make cdk-deploy` to deploy with the CDK
+- `make deploy` to build and deploy
