@@ -12,7 +12,7 @@ export class RustLambdaStack extends cdk.Stack {
     const fn = new lambda.Function(this, 'rust_lambda', {
       runtime: lambda.Runtime.PROVIDED_AL2,
       handler: 'main',
-      code: lambda.Code.fromAsset(path.join(__dirname, '../target/x86_64-unknown-linux-musl/release/my_lambda_func.zip')),
+      code: lambda.Code.fromAsset(path.join(__dirname, '../target/x86_64-unknown-linux-gnu/release/bootstrap.zip')),
       logRetention: logs.RetentionDays.TWO_WEEKS,
     });
 
